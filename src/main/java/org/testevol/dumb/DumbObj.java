@@ -1,4 +1,4 @@
-package org.testevol;
+package org.testevol.dumb;
 
 public class DumbObj {
 

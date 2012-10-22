@@ -2,81 +2,115 @@ package org.testevol;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Reader;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
+import org.testevol.dumb.DumbObj;
 
+public class MathTest {
 
-public class MathTest{
-
-
+	/*
+	 * Test removed, because throws an CompilationError.
+	 * It must be included in Category C4
 	@Test
-	public void testAbs(){
+	public void abs(){
 		Assert.assertEquals(8, Math.abs(-8));
 	}
+	*/
 	
+	/*
+	 * Test removed, but it should still pass in this version of the program.
+	 * It must be included in Category C5.
+
 	@Test
 	public void round(){
 		Assert.assertEquals(8, Math.round(8.4));
 	}
+	*/
 	
-	/**
-	 * This test was removed because it throws an assertion fail
-	 * in the new version of the program. It must be included in
-	 * category C3
+	/*
+	 * Test included that also passes on the old version of the program.
+	 * Must be included in Category C8
 	 */
 	@Test
-	public void round2(){
-		Assert.assertEquals(8, Math.round(8.5));
-	}
-		
-	//This test will be included in the C1 category, as it will
-	//fail in P' because Math.max has changed parameters and return type
-	@Test
-	public void max(){
-		int max = Math.max(1,2);
-		Assert.assertEquals(2,max);
+	public void newRound(){
+		Assert.assertEquals(8, Math.round(8.4));
+		Assert.assertEquals(9, Math.round(9.4));
 	}
 
-	@Test
-	public void min(){
-		int min = Math.min(1,1);
-		Assert.assertEquals(1,min);
-	}
-	
-	@Test
-	public void pow(){
-		Assert.assertEquals(8.0, Math.pow(2, 3));
-	}
-
-	@Test
-	public void sumFile() throws IOException{
-		Reader reader = new InputStreamReader(Math.class.getResourceAsStream("test.txt"));
-		Assert.assertEquals(2, Math.sumFile(reader));
-	}
-	
-	@Test
-	public void print() throws IOException{
-		Assert.assertEquals("testevol", Math.printMath("testevol"));
-	}
-	
-	@Test
-	public void echo() throws IOException{
-		Assert.assertEquals("testevol", Math.echo("testevol"));
-	}
 	
 	public void testPing(){
 		Assert.assertEquals("pong", Math.ping(new DumbObj("pong")));
 	}
 	
+	/**
+	 * Included toi validade a bux fix. Category C6
+	 */
 	@Test
-	public void newRoundOriginal(){
+	public void newRound2(){
+		Assert.assertEquals(9, Math.round(8.5));
+	}
+	
+	@Test
+	public void newRound_Clone(){
 		Assert.assertEquals(10, Math.round(9.9));
 	}
 
-	public void testPing2(){
+	/*
+	 *This test will throw a NullPointerException in the old version,
+	 *thus it will be included in Category C6 
+	 */
+	@Test
+	public void tan(){
+		Assert.assertEquals(0.0, Math.tan(null));
+	}
+	
+	@Test
+	public void max(){
+		double max = Math.max(1.0,2.0);
+		Assert.assertEquals(2.0,max,0.001d);
+	}
+	
+	/*
+	 * Test removed, because throws an RuntimeException.
+	 * It must be included in Category C3
+	@Test
+	public void min(){
+		int min = Math.min(1,1);
+		Assert.assertEquals(1,min);
+	}
+	*/
+	
+	@Test
+	public void pow(){
+		Assert.assertEquals(8.0, Math.pow(2, 3));
+		Assert.assertEquals(1.0, Math.pow(1, 0));
+	}
+	
+	/*
+	 * The method Math.sqrt does not exist in the old version, so
+	 * this test will cause an compilation error, consequently this
+	 * test in included in Category C7
+	 */
+	@Test
+	public void sqrt(){
+		Assert.assertEquals(5.0, Math.sqrt(25.0));
+	}
+	
+	@Test
+	public void sumFile() throws IOException{
+		Assert.assertEquals(3, Math.sumFile(new InputStreamReader(Math.class.getResourceAsStream("test.txt"))));
+	}
+	
+	/*
+	@Test
+	public void thiIsNotAClone() throws IOException{
+		Assert.assertEquals("leandro", Math.printMath("leandro"));
+		Assert.assertEquals(8.0, Math.pow(2, 3));
+	}*/
+	
+	public void testPing2_Clone(){
 		Assert.assertEquals("pong", Math.ping(new DumbObj("pong")));
 		Assert.assertEquals("ping", Math.ping(new DumbObj("ping")));
 	}
@@ -84,10 +118,11 @@ public class MathTest{
 	@Test
 	public void testCompare(){
 		Assert.assertEquals(1, 1);
+		Assert.assertEquals(2, 2);	
 	}
 	
-	@Test
-	public void testEcho2(){
-		Math.echo("testi");
-	}
+	/*@Test
+	public void testEcho(){
+		Math.echo("test");
+	}*/
 }
