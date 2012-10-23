@@ -4,7 +4,7 @@
 	<groupId>org.testevol.examples</groupId>
 	<artifactId>math</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Test Evol - Math</name>
+	<name>Test Evol-Math</name>
 
 	<dependencies>
 		<dependency>
