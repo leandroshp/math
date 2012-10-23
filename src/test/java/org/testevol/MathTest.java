@@ -64,7 +64,7 @@ public class MathTest{
 	
 	@Test
 	public void echo() throws IOException{
-		Assert.assertEquals("testevol", Math.echo("testevol"));
+		Assert.assertEquals("testevol2", Math.echo("testevol2"));
 	}
 	
 	public void testPing(){
