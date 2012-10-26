@@ -1,13 +1,15 @@
 package org.testevol;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.testevol.dumb.DumbObj;
 
 public class MathTest {
-
+	
 	/*
 	 * Test removed, because throws an CompilationError.
 	 * It must be included in Category C4
@@ -37,7 +39,7 @@ public class MathTest {
 		Assert.assertEquals(9, Math.round(9.4));
 	}
 
-	
+	@Test
 	public void testPing(){
 		Assert.assertEquals("pong", Math.ping(new DumbObj("pong")));
 	}
@@ -98,16 +100,16 @@ public class MathTest {
 	
 	@Test
 	public void sumFile() throws IOException{
-		Assert.assertEquals(3, Math.sumFile());
-	}
-	
+		Reader reader = new InputStreamReader(Math.class.getResourceAsStream("test.txt"));
+		Assert.assertEquals(3, Math.sumFile(reader));
+	}	
 	/*
 	@Test
 	public void thiIsNotAClone() throws IOException{
 		Assert.assertEquals("leandro", Math.printMath("leandro"));
 		Assert.assertEquals(8.0, Math.pow(2, 3));
 	}*/
-	
+	@Test
 	public void testPing2_Clone(){
 		Assert.assertEquals("pong", Math.ping(new DumbObj("pong")));
 		Assert.assertEquals("ping", Math.ping(new DumbObj("ping")));
