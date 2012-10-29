@@ -5,10 +5,22 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 
 import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.testevol.dumb.DumbObj;
 
 public class MathTest {
+	
+	@Before
+	public void aaa(){
+		System.out.println("BEFORE TEST MATHTEST");
+	}
+	
+	@BeforeClass
+	public void aaa2(){
+		System.out.println("BEFORECLASS TEST MATHTEST");
+	}
 	
 	/*
 	 * Test removed, because throws an CompilationError.
