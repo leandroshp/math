@@ -3,6 +3,8 @@ package org.testevol;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.Arrays;
+import java.util.Collection;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -10,13 +12,30 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
 import org.testevol.dumb.DumbObj;
 
+@RunWith(value = Parameterized.class)
 public class MathTest {
+	
+	private int number;
+
+	public MathTest(int number) {
+	    this.number = number;
+	 }
+ 
+	 @Parameters
+	 public static Collection<Object[]> data() {
+	   Object[][] data = new Object[][] { { 1 }, { 2 }, { 3 }, { 4 } };
+	   return Arrays.asList(data);
+	 }
+ 
 	
 	@Before
 	public void aaa(){
-		System.out.println("BEFORE TEST MATHTEST");
+		System.out.println("BEFORE TEST MATHTEST "+number);
 	}
 	
 	@BeforeClass
@@ -26,12 +45,12 @@ public class MathTest {
 	
 	@After
 	public void aaa4(){
-		System.out.println("BEFORE TEST MATHTEST");
+		System.out.println("AFTER TEST MATHTEST "+number);
 	}
 	
 	@AfterClass
 	public static void aaa3(){
-		System.out.println("BEFORECLASS TEST MATHTEST");
+		System.out.println("AFTERCLASS TEST MATHTEST");
 	}
 	
 	/*
