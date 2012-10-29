@@ -18,7 +18,7 @@ public class MathTest {
 	}
 	
 	@BeforeClass
-	public void aaa2(){
+	public static void aaa2(){
 		System.out.println("BEFORECLASS TEST MATHTEST");
 	}
 	
