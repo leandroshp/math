@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -19,6 +21,16 @@ public class MathTest {
 	
 	@BeforeClass
 	public static void aaa2(){
+		System.out.println("BEFORECLASS TEST MATHTEST");
+	}
+	
+	@After
+	public void aaa4(){
+		System.out.println("BEFORE TEST MATHTEST");
+	}
+	
+	@AfterClass
+	public static void aaa3(){
 		System.out.println("BEFORECLASS TEST MATHTEST");
 	}
 	
